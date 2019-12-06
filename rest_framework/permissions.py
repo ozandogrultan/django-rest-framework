@@ -72,7 +72,7 @@ class OR:
     def __init__(self, op1, op2):
         self.op1 = op1
         self.op2 = op2
-        self.message = op1.message or op2.message
+        self.message = getattr(op1, 'message', None) or getattr(op2, 'message', None)
 
     def has_permission(self, request, view):
         return (
